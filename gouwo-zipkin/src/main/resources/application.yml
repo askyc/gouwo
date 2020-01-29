@@ -1,0 +1,17 @@
+server:
+  port: 8681
+spring:
+  application:
+    name: gouwo-zipkin
+  profiles:
+    active: dev
+
+# 教程地址：
+# http://www.ityouknow.com/springcloud/2018/02/02/spring-cloud-sleuth-zipkin.html
+# 哪个模块需要zipkin支持就添加如下配置
+#spring:
+#  zipkin:
+#    base-url: http://localhost:8681
+#  sleuth:
+#    sampler:
+#      percentage: 1.0  #采样比例设置为1.0，也就是全部都需要。

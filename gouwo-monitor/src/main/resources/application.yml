@@ -1,0 +1,44 @@
+server:
+  port: 8581
+
+spring:
+  application:
+    name: gouwo-monitor
+  security: # 配置登录用户名和密码
+    user:
+      name: asky
+      password: 123456
+#  mail:
+#      host: smtp.163.com
+#      username: typ@163.com #此处账号
+#      password: admin #此处的密码是授权码
+  boot:  # 不显示admin-server的监控信息
+    admin:
+#      notify: # start 未定
+#        mail:
+#          to: askyc@qq.com  # end 未定
+      discovery:
+        ignored-services: ${spring.application.name} # ???
+
+management:  # start 未知
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always  # end 未知
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8181/eureka/
+#  instance: #配置spring security的用户名和密码，需要在服务注册时带上metadata-map的信息；
+#      health-check-url-path: /actuator/health
+#      lease-renewal-interval-in-seconds: 10
+#      metadata-map:
+#        user.name: ${spring.security.user.name}
+#        user.password: ${spring.security.user.password}
+

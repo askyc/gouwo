@@ -1,0 +1,6 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://gouwo-eureka:8181/eureka/
+  instance:
+    prefer-ip-address: true
