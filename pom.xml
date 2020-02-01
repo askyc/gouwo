@@ -9,16 +9,26 @@
     <packaging>pom</packaging>
 
     <modules>
+        <!--组件模块-->
         <module>gouwo-common</module>
         <module>gouwo-mbg</module>
         <module>gouwo-security</module>
-
+        <!--基础模块-->
         <module>gouwo-eureka</module>
         <module>gouwo-config</module>
         <module>gouwo-gateway</module>
         <module>gouwo-monitor</module>
         <module>gouwo-turbine</module>
         <module>gouwo-zipkin</module>
+        <!--服务模块-->
+        <module>gouwo-people</module>
+        <module>gouwo-house</module>
+        <module>gouwo-essay</module>
+        <module>gouwo-vlog</module>
+        <!--<module>gouwo-search</module>-->
+        <!--<module>gouwo-echarts</module>-->
+        <!--<module>gouwo-bill</module>-->
+        <!--<module>gouwo-area</module>-->
     </modules>
 
     <name>gouwo</name>
