@@ -10,8 +10,8 @@
 
     <modules>
         <!--组件模块-->
+        <module>gouwo-codetool</module>
         <module>gouwo-common</module>
-        <module>gouwo-mbg</module>
         <module>gouwo-security</module>
         <!--基础模块-->
         <module>gouwo-eureka</module>
@@ -48,7 +48,6 @@
         <java.version>1.8</java.version>
         <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
         <gouwo-common.version>0.0.1-SNAPSHOT</gouwo-common.version>
-        <gouwo-mbg.version>0.0.1-SNAPSHOT</gouwo-mbg.version>
         <gouwo-security.version>0.0.1-SNAPSHOT</gouwo-security.version>
         <pagehelper-starter.version>1.2.10</pagehelper-starter.version>
         <pagehelper.version>5.1.8</pagehelper.version>
@@ -106,12 +105,7 @@
                 <artifactId>gouwo-common</artifactId>
                 <version>${gouwo-common.version}</version>
             </dependency>
-            <!--gouwo中MBG生成模块-->
-            <dependency>
-                <groupId>com.gouwo</groupId>
-                <artifactId>gouwo-mbg</artifactId>
-                <version>${gouwo-mbg.version}</version>
-            </dependency>
+
             <!--gouwo安全模块-->
             <dependency>
                 <groupId>com.gouwo</groupId>
