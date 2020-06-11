@@ -1,7 +1,7 @@
 package com.gouwo.component;
 
 import cn.hutool.json.JSONUtil;
-import com.gouwo.CommonResult;
+import com.gouwo.api.CommonResult;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 

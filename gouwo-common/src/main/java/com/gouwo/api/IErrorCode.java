@@ -1,4 +1,4 @@
-package com.gouwo;
+package com.gouwo.api;
 
 /**
  * 封装API的错误码

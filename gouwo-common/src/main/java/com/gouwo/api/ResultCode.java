@@ -1,4 +1,4 @@
-package com.gouwo;
+package com.gouwo.api;
 
 /**
  * 枚举了一些常用API操作码
