@@ -61,6 +61,8 @@ public class CodeGenerator {
         //XML columList  在xml中生产基础列
         gc.setBaseColumnList(true);
         gc.setOpen(false);
+        // 实体属性 Swagger2 注解
+        gc.setSwagger2(true);
         //作者
         gc.setAuthor(rb.getString("author"));
 

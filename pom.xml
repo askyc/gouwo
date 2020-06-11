@@ -53,7 +53,7 @@
         <pagehelper.version>5.1.8</pagehelper.version>
         <druid.version>1.1.10</druid.version>
         <hutool.version>4.5.7</hutool.version>
-        <swagger2.version>2.7.0</swagger2.version>
+        <swagger.version>2.9.1</swagger.version>
         <mybatis.version>3.4.6</mybatis.version>
         <mysql-connector.version>8.0.15</mysql-connector.version>
         <spring-data-commons.version>2.1.5.RELEASE</spring-data-commons.version>
@@ -135,17 +135,19 @@
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
             </dependency>
+
             <!--Swagger-UI API文档生产工具-->
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger2</artifactId>
-                <version>${swagger2.version}</version>
+                <version>${swagger.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger-ui</artifactId>
-                <version>${swagger2.version}</version>
+                <version>${swagger.version}</version>
             </dependency>
+
             <!-- MyBatis-->
             <dependency>
                 <groupId>org.mybatis</groupId>
