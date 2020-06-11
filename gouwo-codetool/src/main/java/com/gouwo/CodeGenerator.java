@@ -47,8 +47,9 @@ public class CodeGenerator {
         //全局配置
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
+        String modulePath = scanner("子项目名!");
         //生成路径(一般都是生成在此项目的src/main/java下面)
-        gc.setOutputDir(projectPath +rb.getString("modulePath")+"/src/main/java");
+        gc.setOutputDir(projectPath + "\\"+  modulePath + "\\src\\main\\java");
         //第二次生成会把第一次的覆盖
         gc.setFileOverride(true);
         //不需要ActiveRecord特性的请改为false
@@ -110,8 +111,7 @@ public class CodeGenerator {
             @Override
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                return projectPath + rb.getString("modulePath") + "/src/main/resources/mapper/"
-                        + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
+                return projectPath + "\\"+ modulePath + "\\src\\main\\resources\\mapper\\" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
             }
         });
         cfg.setFileOutConfigList(focList);
