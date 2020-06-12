@@ -79,6 +79,12 @@
             <artifactId>spring-boot-starter-data-redis</artifactId>
             <version>2.1.7.RELEASE</version>
         </dependency>
+
+        <!--gouwo安全模块-->
+        <!--<dependency>-->
+            <!--<groupId>com.gouwo</groupId>-->
+            <!--<artifactId>gouwo-security</artifactId>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>

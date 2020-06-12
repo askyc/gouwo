@@ -7,10 +7,11 @@ import com.gouwo.service.PeoUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gouwo.service.RedisService;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
 
+import org.springframework.stereotype.Service;
 import java.util.Random;
 
 /**
@@ -24,13 +25,15 @@ import java.util.Random;
 @Service
 public class PeoUserServiceImpl extends ServiceImpl<PeoUserMapper, PeoUser> implements PeoUserService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(PeoUserServiceImpl.class);
+
+    //@Value("${redis.key.prefix.authCode}")
+    private String REDIS_KEY_PREFIX_AUTH_CODE="authCode";
+    //@Value("${redis.key.expire.authCode}")
+    private Long AUTH_CODE_EXPIRE_SECONDS= Long.valueOf(60);
+
     @Autowired
     private RedisService redisService;
-
-    @Value("${redis.key.prefix.authCode}")
-    private String REDIS_KEY_PREFIX_AUTH_CODE="authCode";
-    @Value("${redis.key.expire.authCode}")
-    private Long AUTH_CODE_EXPIRE_SECONDS= Long.valueOf(60);
 
     @Override
     public CommonResult generateAuthCode(String telephone) {
@@ -45,8 +48,6 @@ public class PeoUserServiceImpl extends ServiceImpl<PeoUserMapper, PeoUser> impl
         return CommonResult.success(sb.toString(), "获取验证码成功");
     }
 
-
-    //对输入的验证码进行校验
     @Override
     public CommonResult verifyAuthCode(String telephone, String authCode) {
         if (StringUtils.isEmpty(authCode)) {

@@ -6,13 +6,10 @@ import com.gouwo.model.PeoUser;
 import com.gouwo.service.PeoUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Value;
 
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -28,7 +25,8 @@ import java.util.List;
 @RequestMapping("/peo-user")
 public class PeoUserController {
 
-    @Resource
+
+    @Autowired
     private PeoUserService peoUserService;
 
     @ApiOperation("获取所有用户")
@@ -51,4 +49,6 @@ public class PeoUserController {
                                        @RequestParam String authCode) {
         return peoUserService.verifyAuthCode(telephone,authCode);
     }
+
+
 }
