@@ -1,16 +1,16 @@
 package com.gouwo.service;
 
-import com.gouwo.model.PeoRole;
+import com.gouwo.model.PeoRoleModel;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>
- *  服务类
+ * 角色表 服务类
  * </p>
  *
  * @author asky
- * @since 2020-06-11
+ * @since 2020-06-14
  */
-public interface PeoRoleService extends IService<PeoRole> {
+public interface PeoRoleService extends IService<PeoRoleModel> {
 
 }

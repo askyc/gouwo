@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * 角色表 前端控制器
+ * 个人租房时间线表 前端控制器
  * </p>
  *
  * @author asky
  * @since 2020-06-14
  */
 @RestController
-@RequestMapping("/peo-role-model")
-public class PeoRoleController {
+@RequestMapping("/peo-rent-timeline-model")
+public class PeoRentTimelineController {
 
 }

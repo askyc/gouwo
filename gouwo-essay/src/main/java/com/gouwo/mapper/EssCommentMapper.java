@@ -1,16 +1,16 @@
 package com.gouwo.mapper;
 
-import com.gouwo.model.PeoUserModel;
+import com.gouwo.model.EssCommentModel;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * <p>
- * 用户表 Mapper 接口
+ * 图文评论表 Mapper 接口
  * </p>
  *
  * @author asky
  * @since 2020-06-14
  */
-public interface PeoUserMapper extends BaseMapper<PeoUserModel> {
+public interface EssCommentMapper extends BaseMapper<EssCommentModel> {
 
 }

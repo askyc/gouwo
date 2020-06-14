@@ -81,12 +81,12 @@ public class CodeGenerator {
         gc.setServiceName("%sService");
         gc.setServiceImplName("%sServiceImpl");
         gc.setMapperName("%sMapper");
-        gc.setXmlName("%sMapper");
+        gc.setEntityName("%sModel");
         mpg.setGlobalConfig(gc);
 
          //包配置
         PackageConfig pc = new PackageConfig();
-        //pc.setModuleName(scanner("模块名"));
+        //pc.setModuleName(scanner("包名"));
         pc.setParent(rb.getString("parent"));
         pc.setController("controller");
         pc.setService("service");
@@ -112,8 +112,9 @@ public class CodeGenerator {
         focList.add(new FileOutConfig(templatePath) {
             @Override
             public String outputFile(TableInfo tableInfo) {
-                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                return projectPath + "\\"+ modulePath + "\\src\\main\\resources\\mapper\\" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
+                // 自定义输出文件名 ， 如果Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
+                return projectPath + "\\"+ modulePath + "\\src\\main\\resources\\mapper\\" + tableInfo.getEntityName().
+                        substring(0,tableInfo.getEntityName().length()-5) + "Mapper" + StringPool.DOT_XML;
             }
         });
         cfg.setFileOutConfigList(focList);
