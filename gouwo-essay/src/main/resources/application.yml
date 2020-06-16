@@ -20,9 +20,9 @@ mybatis:
 
 
 
-#eureka:
-#  client:
-#    service-url:
-#      defaultZone: http://localhost:8181/eureka/
-#    registry-fetch-interval-seconds: 10
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8181/eureka/
+    registry-fetch-interval-seconds: 10
 
