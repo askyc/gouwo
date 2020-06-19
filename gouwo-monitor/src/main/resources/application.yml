@@ -1,9 +1,10 @@
 server:
   port: 8481
-
 spring:
   application:
     name: gouwo-monitor
+  profiles:
+    active: dev
   security: # 配置登录用户名和密码
     user:
       name: asky
@@ -29,12 +30,6 @@ management:  # start 未知
     health:
       show-details: always  # end 未知
 
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8181/eureka/
 #  instance: #配置spring security的用户名和密码，需要在服务注册时带上metadata-map的信息；
 #      health-check-url-path: /actuator/health
 #      lease-renewal-interval-in-seconds: 10
