@@ -65,5 +65,99 @@ public class EssArticleModel implements Serializable {
     @ApiModelProperty(value = "收藏量")
     private String collectAmount;
 
+    public Integer getArticleId() {
+        return articleId;
+    }
 
+    public void setArticleId(Integer articleId) {
+        this.articleId = articleId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getTitlePage() {
+        return titlePage;
+    }
+
+    public void setTitlePage(String titlePage) {
+        this.titlePage = titlePage;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public LocalDate getReleaseTime() {
+        return releaseTime;
+    }
+
+    public void setReleaseTime(LocalDate releaseTime) {
+        this.releaseTime = releaseTime;
+    }
+
+    public String getReleaseLocation() {
+        return releaseLocation;
+    }
+
+    public void setReleaseLocation(String releaseLocation) {
+        this.releaseLocation = releaseLocation;
+    }
+
+    public String getArticleStatus() {
+        return articleStatus;
+    }
+
+    public void setArticleStatus(String articleStatus) {
+        this.articleStatus = articleStatus;
+    }
+
+    public String getReadAmount() {
+        return readAmount;
+    }
+
+    public void setReadAmount(String readAmount) {
+        this.readAmount = readAmount;
+    }
+
+    public String getLikeAmount() {
+        return likeAmount;
+    }
+
+    public void setLikeAmount(String likeAmount) {
+        this.likeAmount = likeAmount;
+    }
+
+    public String getCollectAmount() {
+        return collectAmount;
+    }
+
+    public void setCollectAmount(String collectAmount) {
+        this.collectAmount = collectAmount;
+    }
 }
