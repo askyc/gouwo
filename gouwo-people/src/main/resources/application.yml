@@ -4,14 +4,23 @@ server:
 spring:
   application:
     name: gouwo-people
-#  profiles:
-#    active: dev
+  #  profiles:
+  #    active: dev
 
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://localhost:3306/gouwo?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
     password: root
+
+  #RabbitMQ配置========================
+  rabbitmq:
+    host: localhost # rabbitmq的连接地址
+    port: 5672 # rabbitmq的连接端口号
+    virtual-host: /gouwo # rabbitmq的虚拟host
+    username: gouwo # rabbitmq的用户名
+    password: 123456 # rabbitmq的密码
+    publisher-confirms: true #如果对异步消息需要回调必须设置为true
 
 
 mybatis:

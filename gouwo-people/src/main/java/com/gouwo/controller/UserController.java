@@ -27,6 +27,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @ApiOperation("登录")
+    @RequestMapping("/login")
+    public String login(@RequestBody PeoUserModel model){
+        System.out.println("成功"+model.toString());
+        return "success";
+    }
+
     @ApiOperation("获取所有用户")
     @RequestMapping("/getUserList")
     public List<PeoUserModel> getUserList(){

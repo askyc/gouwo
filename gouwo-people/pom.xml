@@ -48,7 +48,7 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.2.0</version>
+            <version>3.1.0</version>
         </dependency>
 
         <dependency>
@@ -87,10 +87,16 @@
         </dependency>
 
         <!--gouwo安全模块-->
-        <!--<dependency>-->
-            <!--<groupId>com.gouwo</groupId>-->
-            <!--<artifactId>gouwo-security</artifactId>-->
-        <!--</dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.gouwo</groupId>-->
+<!--            <artifactId>gouwo-security</artifactId>-->
+<!--        </dependency>-->
+
+        <!--RabbitMQ依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
