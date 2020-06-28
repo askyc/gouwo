@@ -1,0 +1,27 @@
+server:
+  port: 9002
+
+spring:
+  application:
+    name: gouwo-house
+  #  profiles:
+  #    active: dev
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/gouwo?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+
+
+mybatis:
+  mapper-locations:
+    - classpath:mapper/*.xml
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8181/eureka/
+    registry-fetch-interval-seconds: 10
+
