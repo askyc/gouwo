@@ -1,0 +1,22 @@
+===========
+#开启服务
+cd E:\MongoDB\Server\bin
+-----
+mongod --dbpath E:\MongoDB\Server\data
+
+================
+启动服务：net start MongoDB
+关闭服务：net stop MongoDB
+=========
+#开启命令shell
+mongo
+
+============
+MongoDB shell自带了一些语法糖：
+
+show dbs     列出所有DB
+use dbname   切换当前DB
+show tables  或 show collections  列出当前DB的所有表/集合
+show users   列出当前DB的所有用户
+show profile 列出当前DB的所有慢查询
+show logs     列出运行日志
