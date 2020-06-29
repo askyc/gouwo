@@ -15,6 +15,19 @@ import com.gouwo.model.PeoUserModel;
 public interface UserService extends IService<PeoUserModel> {
 
     /**
+     * 注册
+     */
+    PeoUserModel register(PeoUserModel model);
+
+    /**
+     * 登录
+     * @param username 用户名
+     * @param password 密码
+     * @return 生成的JWT的token
+     */
+    String login(String username,String password);
+
+    /**
      * 生成验证码
      */
     CommonResult generateAuthCode(String telephone);

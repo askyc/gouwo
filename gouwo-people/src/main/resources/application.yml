@@ -13,6 +13,15 @@ spring:
     username: root
     password: root
 
+  #swagger配置========================
+  security:
+    basic:
+      enabled: true
+      path: /swagger-ui.html
+    user:
+      name: admin
+      password: 123456
+
   #RabbitMQ配置========================
   rabbitmq:
     host: localhost # rabbitmq的连接地址
@@ -50,6 +59,12 @@ mybatis:
 #mybatis-plus:
 #  mapper-locations: classpath*:mapper/*
 
+#JWT认证和授权配置========================
+jwt:
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: gouwo-secret #JWT加解密使用的密钥
+  expiration: 604800 #JWT的超期限时间(60*60*24)
+  tokenHead: Asky  #JWT负载中拿到开头
 
 #Feign的常用配置========================
 feign:

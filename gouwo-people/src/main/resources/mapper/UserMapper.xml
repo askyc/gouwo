@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gouwo.mapper.PeoUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gouwo.model.PeoUserModel">
+        <id column="user_id" property="userId" />
+        <result column="user_name" property="userName" />
+        <result column="nickname" property="nickname" />
+        <result column="account" property="account" />
+        <result column="password" property="password" />
+        <result column="gender" property="gender" />
+        <result column="age" property="age" />
+        <result column="email" property="email" />
+        <result column="phone_number" property="phoneNumber" />
+        <result column="address" property="address" />
+    </resultMap>
+
+    <select id="selectByExample" parameterType="com.gouwo.model.PeoUserModel" resultMap="BaseResultMap">
+        select * from peo_user
+    </select>
+
+</mapper>

@@ -1,17 +1,34 @@
 package com.gouwo.service.impl;
 
 import com.gouwo.api.CommonResult;
+import com.gouwo.bo.AdminUserDetails;
+import com.gouwo.mapper.PeoRoleMapper;
 import com.gouwo.mapper.PeoUserMapper;
+import com.gouwo.mapper.UserMapper;
+import com.gouwo.model.PeoRoleModel;
 import com.gouwo.model.PeoUserModel;
 import com.gouwo.service.UserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gouwo.service.RedisService;
+import com.gouwo.util.JwtTokenUtil;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -34,6 +51,71 @@ public class UserServiceImpl extends ServiceImpl<PeoUserMapper, PeoUserModel> im
 
     @Autowired
     private RedisService redisService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private PeoUserMapper peoUserMapper;
+
+    @Autowired
+    private UserMapper userMapper;
+
+    @Autowired
+    private PeoRoleMapper peoRoleMapper;
+
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public JwtTokenUtil jwtTokenUtil() {
+        return new JwtTokenUtil();
+    }
+
+    @Override
+    public PeoUserModel register(PeoUserModel model) {
+        PeoUserModel userModel = new PeoUserModel();
+        BeanUtils.copyProperties(model, userModel);
+        //将密码进行加密操作
+        String encodePassword = passwordEncoder.encode(userModel.getPassword());
+        userModel.setPassword(encodePassword);
+        peoUserMapper.insert(userModel);
+        return userModel;
+    }
+
+    @Override
+    public String login(String username, String password) {
+        String token = null;
+        //密码需要客户端加密后传递
+        try {
+            AdminUserDetails userDetails;
+            PeoUserModel userModel = userMapper.findUser().get(0);
+            if (userModel != null) {
+                List<PeoRoleModel> roleList=new ArrayList<>();
+                PeoRoleModel role= peoRoleMapper.selectById(1);
+                roleList.add(role);
+                userDetails = new AdminUserDetails(userModel,roleList);
+            }else {
+                throw new UsernameNotFoundException("用户名或密码错误");
+            }
+
+            if(!passwordEncoder.matches(password,userDetails.getPassword())){
+                throw new BadCredentialsException("密码不正确");
+            }
+
+            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            token = jwtTokenUtil.generateToken(userDetails);
+        } catch (AuthenticationException e) {
+            LOGGER.warn("登录异常:{}", e.getMessage());
+        }
+        return token;
+    }
 
     @Override
     public CommonResult generateAuthCode(String telephone) {
