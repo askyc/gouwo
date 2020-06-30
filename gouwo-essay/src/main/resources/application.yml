@@ -44,10 +44,24 @@ spring:
         max-wait: -1ms # 连接池最大阻塞等待时间，负值表示没有限制
     timeout: 3000ms # 连接超时时间（毫秒）
 
+  #文件上传配置========================
+  servlet:
+    multipart:
+      enabled: true #开启文件上传
+      max-file-size: 10MB #限制文件上传大小为10M
+
 
 mybatis:
   mapper-locations:
     - classpath:mapper/*.xml
+
+
+# MinIO对象存储相关配置=====================
+minio:
+  endpoint: http://172.17.0.2:9000 #MinIO服务所在地址
+  bucketName: gouwo #存储桶名称
+  accessKey: minioadmin #访问的key
+  secretKey: minioadmin #访问的秘钥
 
 
 
