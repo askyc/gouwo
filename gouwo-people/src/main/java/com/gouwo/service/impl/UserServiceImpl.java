@@ -59,23 +59,10 @@ public class UserServiceImpl extends ServiceImpl<PeoUserMapper, PeoUserModel> im
     private PeoUserMapper peoUserMapper;
 
     @Autowired
-    private UserMapper userMapper;
-
-    @Autowired
     private PeoRoleMapper peoRoleMapper;
 
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public JwtTokenUtil jwtTokenUtil() {
-        return new JwtTokenUtil();
-    }
 
     @Override
     public PeoUserModel register(PeoUserModel model) {
@@ -93,8 +80,10 @@ public class UserServiceImpl extends ServiceImpl<PeoUserMapper, PeoUserModel> im
         String token = null;
         //密码需要客户端加密后传递
         try {
-            AdminUserDetails userDetails;
-            PeoUserModel userModel = userMapper.findUser().get(0);
+            AdminUserDetails userDetails = null;
+            PeoUserModel userModel = new PeoUserModel();
+            userModel.setUserName(username);
+            userModel.setPassword("$2a$10$TWlTarUXx7fu87L9RzHlouDm1w5xicoZHq8BTeh4SeAafzzNeve1u");
             if (userModel != null) {
                 List<PeoRoleModel> roleList=new ArrayList<>();
                 PeoRoleModel role= peoRoleMapper.selectById(1);

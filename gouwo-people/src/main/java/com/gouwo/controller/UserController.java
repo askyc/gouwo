@@ -68,7 +68,7 @@ public class UserController {
 //    }
 
     @ApiOperation("获取所有用户")
-    @RequestMapping("/getUserList")
+    @RequestMapping(value = "/getUserList", method = RequestMethod.GET)
     public List<PeoUserModel> getUserList(){
 
         List<PeoUserModel> list=(List<PeoUserModel>) userService.list();

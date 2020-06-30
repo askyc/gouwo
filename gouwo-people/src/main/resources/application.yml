@@ -13,15 +13,6 @@ spring:
     username: root
     password: root
 
-  #swagger配置========================
-  security:
-    basic:
-      enabled: true
-      path: /swagger-ui.html
-    user:
-      name: admin
-      password: 123456
-
   #RabbitMQ配置========================
   rabbitmq:
     host: localhost # rabbitmq的连接地址
@@ -81,6 +72,23 @@ logging:
   level: #修改日志级别
     com.gouwo.service.FeignService: debug
 
+#security 路径安全配置========================
+secure:
+  ignored:
+    urls: #安全路径白名单
+      - /swagger-ui.html
+      - /swagger-resources/**
+      - /swagger/**
+      - /**/v2/api-docs
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.ico
+      - /webjars/springfox-swagger-ui/**
+      - /druid/**
+      - /actuator/**
+      - /user/login
+      - /user/register
 
 eureka:
   client:
