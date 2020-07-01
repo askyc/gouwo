@@ -22,15 +22,20 @@ import java.io.IOException;
  * JWT登录授权过滤器
  */
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(JwtAuthenticationTokenFilter.class);
-    @Autowired
-    private UserDetailsService userDetailsService;
-    @Autowired
-    private JwtTokenUtil jwtTokenUtil;
+
     @Value("${jwt.tokenHeader}")
     private String tokenHeader;
     @Value("${jwt.tokenHead}")
     private String tokenHead;
+
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
+
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,

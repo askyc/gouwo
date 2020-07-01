@@ -1,6 +1,6 @@
 package com.gouwo.config;
 
-import com.gouwo.service.UserService;
+import com.gouwo.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,11 +19,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public class PeopleSecurityConfig extends SecurityConfig {
 
     @Autowired
-    private UserService userService;
+    private LoginService loginService;
 
     @Bean
     public UserDetailsService userDetailsService() {
         //获取登录用户信息
-        return username -> null;
+        return username -> loginService.loadUserByAccount(username);
     }
 }

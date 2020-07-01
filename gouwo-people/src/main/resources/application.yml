@@ -87,8 +87,8 @@ secure:
       - /webjars/springfox-swagger-ui/**
       - /druid/**
       - /actuator/**
-      - /user/login
-      - /user/register
+      - /sign/login
+      - /sign/register
 
 eureka:
   client:

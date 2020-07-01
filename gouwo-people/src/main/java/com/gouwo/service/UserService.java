@@ -1,6 +1,5 @@
 package com.gouwo.service;
 
-import com.gouwo.api.CommonResult;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.gouwo.model.PeoUserModel;
 
@@ -13,28 +12,5 @@ import com.gouwo.model.PeoUserModel;
  * @since 2020-06-11
  */
 public interface UserService extends IService<PeoUserModel> {
-
-    /**
-     * 注册
-     */
-    PeoUserModel register(PeoUserModel model);
-
-    /**
-     * 登录
-     * @param username 用户名
-     * @param password 密码
-     * @return 生成的JWT的token
-     */
-    String login(String username,String password);
-
-    /**
-     * 生成验证码
-     */
-    CommonResult generateAuthCode(String telephone);
-
-    /**
-     * 判断验证码和手机号码是否匹配
-     */
-    CommonResult verifyAuthCode(String telephone, String authCode);
 
 }
