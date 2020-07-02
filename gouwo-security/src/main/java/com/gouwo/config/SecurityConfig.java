@@ -1,9 +1,9 @@
 package com.gouwo.config;
 
-import com.gouwo.component.JwtAuthenticationTokenFilter;
-import com.gouwo.component.RestAuthenticationEntryPoint;
-import com.gouwo.component.RestfulAccessDeniedHandler;
+import com.gouwo.component.*;
 import com.gouwo.util.JwtTokenUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.configurers.Expression
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
@@ -21,6 +22,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  * 对SpringSecurity的配置的扩展，支持自定义白名单资源路径和查询用户逻辑
  */
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired(required = false)
+    private DynamicSecurityService dynamicSecurityService;
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
@@ -51,6 +55,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // 自定义权限拦截器JWT过滤器
                 .and()
                 .addFilterBefore(jwtAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+        //有动态权限配置时添加动态权限校验过滤器
+        if(dynamicSecurityService!=null){
+            registry.and().addFilterBefore(dynamicSecurityFilter(), FilterSecurityInterceptor.class);
+        }
     }
 
     @Override
@@ -95,4 +103,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new JwtTokenUtil();
     }
 
+    @ConditionalOnBean(name = "dynamicSecurityService")
+    @Bean
+    public DynamicAccessDecisionManager dynamicAccessDecisionManager() {
+        return new DynamicAccessDecisionManager();
+    }
+
+    @ConditionalOnBean(name = "dynamicSecurityService")
+    @Bean
+    public DynamicSecurityFilter dynamicSecurityFilter() {
+        return new DynamicSecurityFilter();
+    }
+
+    @ConditionalOnBean(name = "dynamicSecurityService")
+    @Bean
+    public DynamicSecurityMetadataSource dynamicSecurityMetadataSource() {
+        return new DynamicSecurityMetadataSource();
+    }
 }
