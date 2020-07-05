@@ -13,12 +13,20 @@ spring:
     username: root
     password: root
 
-  #mongodb配置========================
+
   data:
+    #mongodb配置========================
     mongodb:
       host: localhost # mongodb的连接地址
       port: 27017 # mongodb的连接端口号
       database: gouwo # mongodb的连接的数据库
+
+    #elasticsearch配置========================
+    elasticsearch:
+      repositories:
+        enabled: true
+      cluster-nodes: 127.0.0.1:9300 # es的连接地址及端口号
+      cluster-name: elasticsearch # es集群的名称
 
   #Redis配置========================
   redis:
@@ -53,6 +61,7 @@ spring:
 
 mybatis:
   mapper-locations:
+    - classpath:dao/*.xml
     - classpath:mapper/*.xml
 
 
