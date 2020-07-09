@@ -6,11 +6,14 @@ import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
+import com.baomidou.mybatisplus.generator.config.builder.ConfigBuilder;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
+import com.baomidou.mybatisplus.generator.config.rules.FileType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -103,6 +106,26 @@ public class CodeGenerator {
             }
         };
 
+        cfg.setFileCreate(new IFileCreate() {
+            @Override
+            public boolean isCreate(ConfigBuilder configBuilder, FileType fileType, String filePath) {
+                // 判断自定义文件夹是否需要创建,这里调用默认的方法
+                checkDir(filePath);
+                //对于已存在的文件，只需重复生成 model 和 mapper.xml
+                File file = new File(filePath);
+                boolean exist = file.exists();
+                if(exist){
+                    if (filePath.endsWith("Mapper.xml")||FileType.ENTITY==fileType){
+                        return true;
+                    }else {
+                        return false;
+                    }
+                }
+                //不存在的文件都需要创建
+                return  true;
+            }
+        });
+
         // 如果模板引擎是 freemarker
         String templatePath = "/templates/mapper.xml.ftl";
 
@@ -127,8 +150,6 @@ public class CodeGenerator {
 
         //策略配置
         StrategyConfig strategy = new StrategyConfig();
-        //此处可以修改表前缀
-        strategy.setTablePrefix(new String[]{});
         //表名生成策略,下划线到驼峰的命名规则
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
@@ -137,10 +158,10 @@ public class CodeGenerator {
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
         //需要生成的表,如果为空，则默认读取数据库的所有表名
-        //strategy.setInclude(new String[]{"t_user"});
         strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
         strategy.setControllerMappingHyphenStyle(true);
-        strategy.setTablePrefix(pc.getModuleName() + "_");
+        //此处可以修改表前缀
+        strategy.setTablePrefix(rb.getString("tablePrefix").split(","));
         strategy.setSuperServiceClass(null);
         strategy.setSuperServiceImplClass(null);
         strategy.setSuperMapperClass(null);
