@@ -1,6 +1,6 @@
 package com.gouwo.mapper;
 
-import com.gouwo.model.HouRentalDetailsModel;
+import com.gouwo.model.RentalDetailsModel;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author asky
- * @since 2020-06-28
+ * @since 2020-07-12
  */
-public interface HouRentalDetailsMapper extends BaseMapper<HouRentalDetailsModel> {
+public interface RentalDetailsMapper extends BaseMapper<RentalDetailsModel> {
 
 }

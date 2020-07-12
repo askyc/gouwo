@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * 租费明细表 前端控制器
+ * 房子地址表 前端控制器
  * </p>
  *
  * @author asky
- * @since 2020-06-28
+ * @since 2020-07-12
  */
 @RestController
-@RequestMapping("/hou-rental-details-model")
-public class HouRentalDetailsController {
+@RequestMapping("/room-address")
+public class RoomAddressController {
 
 }

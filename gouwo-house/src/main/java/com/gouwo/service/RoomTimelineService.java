@@ -1,6 +1,6 @@
 package com.gouwo.service;
 
-import com.gouwo.model.HouRoomTimelineModel;
+import com.gouwo.model.RoomTimelineModel;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author asky
- * @since 2020-06-28
+ * @since 2020-07-12
  */
-public interface HouRoomTimelineService extends IService<HouRoomTimelineModel> {
+public interface RoomTimelineService extends IService<RoomTimelineModel> {
 
 }

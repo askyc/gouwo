@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gouwo.mapper.RoomSupportMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gouwo.model.RoomSupportModel">
+        <id column="support_id" property="supportId" />
+        <result column="bed" property="bed" />
+        <result column="wardrobe" property="wardrobe" />
+        <result column="sofa" property="sofa" />
+        <result column="table" property="table" />
+        <result column="chair" property="chair" />
+        <result column="broadband" property="broadband" />
+        <result column="airCondition" property="airCondition" />
+        <result column="icebox" property="icebox" />
+        <result column="rangeHood" property="rangeHood" />
+        <result column="microwaveOven" property="microwaveOven" />
+        <result column="television" property="television" />
+        <result column="washer" property="washer" />
+        <result column="bathroom" property="bathroom" />
+        <result column="balcony" property="balcony" />
+        <result column="canCook" property="canCook" />
+        <result column="waterHeater" property="waterHeater" />
+        <result column="heating" property="heating" />
+        <result column="other" property="other" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        support_id, bed, wardrobe, sofa, table, chair, broadband, airCondition, icebox, rangeHood, microwaveOven, television, washer, bathroom, balcony, canCook, waterHeater, heating, other
+    </sql>
+
+</mapper>

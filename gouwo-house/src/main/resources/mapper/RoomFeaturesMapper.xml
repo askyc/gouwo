@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gouwo.mapper.RoomFeaturesMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gouwo.model.RoomFeaturesModel">
+        <id column="features_id" property="featuresId" />
+        <result column="subway" property="subway" />
+        <result column="bus" property="bus" />
+        <result column="elevator" property="elevator" />
+        <result column="first_rent" property="firstRent" />
+        <result column="style" property="style" />
+        <result column="video_house" property="videoHouse" />
+        <result column="vr_see" property="vrSee" />
+        <result column="other" property="other" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        features_id, subway, bus, elevator, first_rent, style, video_house, vr_see, other
+    </sql>
+
+</mapper>

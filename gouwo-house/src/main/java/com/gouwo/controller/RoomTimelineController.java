@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * 房子信息表 前端控制器
+ * 房子时间线表 前端控制器
  * </p>
  *
  * @author asky
- * @since 2020-06-28
+ * @since 2020-07-12
  */
 @RestController
-@RequestMapping("/hou-room-model")
-public class HouRoomController {
+@RequestMapping("/room-timeline")
+public class RoomTimelineController {
 
 }

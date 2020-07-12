@@ -17,14 +17,14 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author asky
- * @since 2020-06-28
+ * @since 2020-07-12
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("hou_room_timeline")
-@ApiModel(value="HouRoomTimelineModel对象", description="房子时间线表")
-public class HouRoomTimelineModel implements Serializable {
+@ApiModel(value="RoomTimelineModel对象", description="房子时间线表")
+public class RoomTimelineModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
