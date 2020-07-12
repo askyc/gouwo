@@ -1,6 +1,6 @@
 package com.gouwo.dao;
 
-import com.gouwo.entity.SearchArticle;
+import com.gouwo.dto.SearchArticleDto;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -11,5 +11,5 @@ import java.util.List;
  * 图文搜索自定义Dao
  */
 public interface SearchArticleDao {
-    List<SearchArticle> getAllArticleList(@Param("id") Integer id);
+    List<SearchArticleDto> getAllArticleList(@Param("id") Integer id);
 }

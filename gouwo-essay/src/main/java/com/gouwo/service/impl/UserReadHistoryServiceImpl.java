@@ -1,6 +1,6 @@
 package com.gouwo.service.impl;
 
-import com.gouwo.entity.UserReadHistory;
+import com.gouwo.dto.UserReadHistoryDto;
 import com.gouwo.repository.UserReadHistoryRepository;
 import com.gouwo.service.UserReadHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class UserReadHistoryServiceImpl implements UserReadHistoryService {
     private UserReadHistoryRepository userReadHistoryRepository;
 
     @Override
-    public int create(UserReadHistory userReadHistory) {
+    public int create(UserReadHistoryDto userReadHistory) {
         userReadHistory.setId(null);
         userReadHistory.setReleaseTime(new Date());
         userReadHistoryRepository.save(userReadHistory);
@@ -30,9 +30,9 @@ public class UserReadHistoryServiceImpl implements UserReadHistoryService {
 
     @Override
     public int delete(List<String> ids) {
-        List<UserReadHistory> deleteList = new ArrayList<>();
+        List<UserReadHistoryDto> deleteList = new ArrayList<>();
         for(String id:ids){
-            UserReadHistory userReadHistory = new UserReadHistory();
+            UserReadHistoryDto userReadHistory = new UserReadHistoryDto();
             userReadHistory.setId(id);
             deleteList.add(userReadHistory);
         }
@@ -41,7 +41,7 @@ public class UserReadHistoryServiceImpl implements UserReadHistoryService {
     }
 
     @Override
-    public List<UserReadHistory> list(Integer userId) {
+    public List<UserReadHistoryDto> list(Integer userId) {
         return userReadHistoryRepository.findReadHistoryByUserId(userId);
     }
 }

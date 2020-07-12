@@ -1,6 +1,6 @@
 package com.gouwo.repository;
 
-import com.gouwo.entity.SearchArticle;
+import com.gouwo.dto.SearchArticleDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
@@ -9,7 +9,7 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
  * @Author asky
  * @Date 2020/7/5 9:45
  */
-public interface SearchArticleRepository extends ElasticsearchRepository<SearchArticle, Integer> {
+public interface SearchArticleRepository extends ElasticsearchRepository<SearchArticleDto, Integer> {
 
     /**
      * 搜索查询
@@ -19,6 +19,6 @@ public interface SearchArticleRepository extends ElasticsearchRepository<SearchA
      * @param page     分页信息
      * @return
      */
-    Page<SearchArticle> findByTitleOrLabelOrKeywords(String title, String label, String keywords, Pageable page);
+    Page<SearchArticleDto> findByTitleOrLabelOrKeywords(String title, String label, String keywords, Pageable page);
 
 }

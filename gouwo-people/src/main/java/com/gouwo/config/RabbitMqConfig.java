@@ -1,6 +1,6 @@
 package com.gouwo.config;
 
-import com.gouwo.entity.QueueEnum;
+import com.gouwo.bo.QueueEnum;
 import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

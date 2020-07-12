@@ -2,8 +2,8 @@ package com.gouwo.controller;
 
 import com.gouwo.api.CommonPage;
 import com.gouwo.api.CommonResult;
-import com.gouwo.entity.ArticleRelatedHouseInfo;
-import com.gouwo.entity.SearchArticle;
+import com.gouwo.dto.ArticleRelatedHouseDto;
+import com.gouwo.dto.SearchArticleDto;
 import com.gouwo.service.SearchArticleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -55,8 +55,8 @@ public class SearchArticleController {
     @ApiOperation(value = "根据id创建图文")
     @RequestMapping(value = "/create/{articleId}", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<SearchArticle> create(@PathVariable Integer articleId) {
-        SearchArticle searchArticle = searchArticleService.create(articleId);
+    public CommonResult<SearchArticleDto> create(@PathVariable Integer articleId) {
+        SearchArticleDto searchArticle = searchArticleService.create(articleId);
         if (searchArticle != null) {
             return CommonResult.success(searchArticle);
         } else {
@@ -67,10 +67,10 @@ public class SearchArticleController {
     @ApiOperation(value = "简单搜索")
     @RequestMapping(value = "/search/simple", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<CommonPage<SearchArticle>> search(@RequestParam(required = false) String keyword,
+    public CommonResult<CommonPage<SearchArticleDto>> search(@RequestParam(required = false) String keyword,
                                                       @RequestParam(required = false, defaultValue = "0") Integer pageNum,
                                                       @RequestParam(required = false, defaultValue = "5") Integer pageSize) {
-        Page<SearchArticle> searchArticlePage = searchArticleService.search(keyword, pageNum, pageSize);
+        Page<SearchArticleDto> searchArticlePage = searchArticleService.search(keyword, pageNum, pageSize);
         return CommonResult.success(CommonPage.restPage(searchArticlePage));
     }
 
@@ -79,31 +79,31 @@ public class SearchArticleController {
             defaultValue = "0", allowableValues = "0,1,2,3,4", paramType = "query", dataType = "integer")
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<CommonPage<SearchArticle>> search(@RequestParam(required = false) String keyword,
+    public CommonResult<CommonPage<SearchArticleDto>> search(@RequestParam(required = false) String keyword,
                                                       @RequestParam(required = false) String label,
                                                       @RequestParam(required = false) String releaseLocation,
                                                       @RequestParam(required = false, defaultValue = "0") Integer pageNum,
                                                       @RequestParam(required = false, defaultValue = "5") Integer pageSize,
                                                       @RequestParam(required = false, defaultValue = "0") Integer sort) {
-        Page<SearchArticle> searchArticlePage = searchArticleService.search(keyword, label, releaseLocation, pageNum, pageSize, sort);
+        Page<SearchArticleDto> searchArticlePage = searchArticleService.search(keyword, label, releaseLocation, pageNum, pageSize, sort);
         return CommonResult.success(CommonPage.restPage(searchArticlePage));
     }
 
     @ApiOperation(value = "根据商品id推荐商品")
     @RequestMapping(value = "/recommend/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<CommonPage<SearchArticle>> recommend(@PathVariable Integer id,
+    public CommonResult<CommonPage<SearchArticleDto>> recommend(@PathVariable Integer id,
                                                          @RequestParam(required = false, defaultValue = "0") Integer pageNum,
                                                          @RequestParam(required = false, defaultValue = "5") Integer pageSize) {
-        Page<SearchArticle> articlePage = searchArticleService.recommend(id, pageNum, pageSize);
+        Page<SearchArticleDto> articlePage = searchArticleService.recommend(id, pageNum, pageSize);
         return CommonResult.success(CommonPage.restPage(articlePage));
     }
 
     @ApiOperation(value = "获取搜索的相关品牌、分类及筛选属性")
     @RequestMapping(value = "/search/relate", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<ArticleRelatedHouseInfo> searchRelatedInfo(@RequestParam(required = false) String keyword) {
-        ArticleRelatedHouseInfo relatedInfo = searchArticleService.searchRelatedInfo(keyword);
+    public CommonResult<ArticleRelatedHouseDto> searchRelatedInfo(@RequestParam(required = false) String keyword) {
+        ArticleRelatedHouseDto relatedInfo = searchArticleService.searchRelatedInfo(keyword);
         return CommonResult.success(relatedInfo);
     }
 }

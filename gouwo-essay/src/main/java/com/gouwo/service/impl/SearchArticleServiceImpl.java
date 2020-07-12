@@ -1,8 +1,8 @@
 package com.gouwo.service.impl;
 
 import com.gouwo.dao.SearchArticleDao;
-import com.gouwo.entity.ArticleRelatedHouseInfo;
-import com.gouwo.entity.SearchArticle;
+import com.gouwo.dto.ArticleRelatedHouseDto;
+import com.gouwo.dto.SearchArticleDto;
 import com.gouwo.model.ArticleModel;
 import com.gouwo.repository.SearchArticleRepository;
 import com.gouwo.service.ArticleService;
@@ -67,16 +67,16 @@ public class SearchArticleServiceImpl implements SearchArticleService {
 
     @Override
     public int importAll() {
-        List<SearchArticle> articleList=new ArrayList<>();
+        List<SearchArticleDto> articleList=new ArrayList<>();
         List<ArticleModel> list = articleService.list();
         for (ArticleModel articleModel : list) {
-            SearchArticle article = new SearchArticle();
+            SearchArticleDto article = new SearchArticleDto();
             BeanUtils.copyProperties(articleModel, article);
             articleList.add(article);
         }
 
-        Iterable<SearchArticle> articleIterable = searchArticleRepository.saveAll(articleList);
-        Iterator<SearchArticle> iterator = articleIterable.iterator();
+        Iterable<SearchArticleDto> articleIterable = searchArticleRepository.saveAll(articleList);
+        Iterator<SearchArticleDto> iterator = articleIterable.iterator();
         int result = 0;
         while (iterator.hasNext()) {
             result++;
@@ -93,9 +93,9 @@ public class SearchArticleServiceImpl implements SearchArticleService {
     @Override
     public void deleteAll(List<Integer> ids) {
         if (!CollectionUtils.isEmpty(ids)) {
-            List<SearchArticle> articleList = new ArrayList<>();
+            List<SearchArticleDto> articleList = new ArrayList<>();
             for (Integer id : ids) {
-                SearchArticle searchArticle = new SearchArticle();
+                SearchArticleDto searchArticle = new SearchArticleDto();
                 searchArticle.setArticleId(id);
                 articleList.add(searchArticle);
             }
@@ -104,11 +104,11 @@ public class SearchArticleServiceImpl implements SearchArticleService {
     }
 
     @Override
-    public SearchArticle create(Integer articleId) {
-        SearchArticle result = null;
+    public SearchArticleDto create(Integer articleId) {
+        SearchArticleDto result = null;
         ArticleModel article = articleService.getById(articleId);
         if (article!=null) {
-            SearchArticle searchArticle = new SearchArticle();
+            SearchArticleDto searchArticle = new SearchArticleDto();
             BeanUtils.copyProperties(article, searchArticle);
             result = searchArticleRepository.save(searchArticle);
         }
@@ -116,13 +116,13 @@ public class SearchArticleServiceImpl implements SearchArticleService {
     }
 
     @Override
-    public Page<SearchArticle> search(String keyword, Integer pageNum, Integer pageSize) {
+    public Page<SearchArticleDto> search(String keyword, Integer pageNum, Integer pageSize) {
         Pageable pageable = PageRequest.of(pageNum, pageSize);
         return searchArticleRepository.findByTitleOrLabelOrKeywords(keyword, keyword, keyword, pageable);
     }
 
     @Override
-    public Page<SearchArticle> search(String keyword, String label, String releaseLocation, Integer pageNum, Integer pageSize, Integer sort) {
+    public Page<SearchArticleDto> search(String keyword, String label, String releaseLocation, Integer pageNum, Integer pageSize, Integer sort) {
         Pageable pageable = PageRequest.of(pageNum, pageSize);
         NativeSearchQueryBuilder nativeSearchQueryBuilder = new NativeSearchQueryBuilder();
         //分页
@@ -180,11 +180,11 @@ public class SearchArticleServiceImpl implements SearchArticleService {
     }
 
     @Override
-    public Page<SearchArticle> recommend(Integer id, Integer pageNum, Integer pageSize) {
+    public Page<SearchArticleDto> recommend(Integer id, Integer pageNum, Integer pageSize) {
         Pageable pageable = PageRequest.of(pageNum, pageSize);
-        List<SearchArticle> articleList = searchArticleDao.getAllArticleList(id);
+        List<SearchArticleDto> articleList = searchArticleDao.getAllArticleList(id);
         if (articleList.size() > 0) {
-            SearchArticle article = articleList.get(0);
+            SearchArticleDto article = articleList.get(0);
             String keyword = article.getTitle();
             String label = article.getLabel();
             String releaseLocation = article.getReleaseLocation();
@@ -216,7 +216,7 @@ public class SearchArticleServiceImpl implements SearchArticleService {
     }
 
     @Override
-    public ArticleRelatedHouseInfo searchRelatedInfo(String keyword) {
+    public ArticleRelatedHouseDto searchRelatedInfo(String keyword) {
         NativeSearchQueryBuilder builder = new NativeSearchQueryBuilder();
         //搜索条件
         if(StringUtils.isEmpty(keyword)){
@@ -248,8 +248,8 @@ public class SearchArticleServiceImpl implements SearchArticleService {
     /**
      * 将返回结果转换为对象
      */
-    private ArticleRelatedHouseInfo convertProductRelatedInfo(SearchResponse response) {
-        ArticleRelatedHouseInfo relatedInfo = new ArticleRelatedHouseInfo();
+    private ArticleRelatedHouseDto convertProductRelatedInfo(SearchResponse response) {
+        ArticleRelatedHouseDto relatedInfo = new ArticleRelatedHouseDto();
         Map<String, Aggregation> aggregationMap = response.getAggregations().getAsMap();
         //设置品牌
         Aggregation brandNames = aggregationMap.get("brandNames");
@@ -268,9 +268,9 @@ public class SearchArticleServiceImpl implements SearchArticleService {
         //设置参数
         Aggregation productAttrs = aggregationMap.get("allAttrValues");
         List<LongTerms.Bucket> attrIds = ((LongTerms) ((InternalFilter) ((InternalNested) productAttrs).getProperty("productAttrs")).getProperty("attrIds")).getBuckets();
-        List<ArticleRelatedHouseInfo.HouseAttr> attrList = new ArrayList<>();
+        List<ArticleRelatedHouseDto.HouseAttr> attrList = new ArrayList<>();
         for (Terms.Bucket attrId : attrIds) {
-            ArticleRelatedHouseInfo.HouseAttr attr = new ArticleRelatedHouseInfo.HouseAttr();
+            ArticleRelatedHouseDto.HouseAttr attr = new ArticleRelatedHouseDto.HouseAttr();
             attr.setAttrId((Long) attrId.getKey());
             List<String> attrValueList = new ArrayList<>();
             List<StringTerms.Bucket> attrValues = ((StringTerms) attrId.getAggregations().get("attrValues")).getBuckets();

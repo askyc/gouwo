@@ -1,4 +1,4 @@
-package com.gouwo.entity;
+package com.gouwo.dto;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import java.util.List;
  * @Date 2020/7/5 13:47
  * * 相关图文、出租房拥有者，及房子时间线信息
  */
-public class ArticleRelatedHouseInfo {
+public class ArticleRelatedHouseDto {
 
     private List<String> title;
     private List<String> releaseLocation;

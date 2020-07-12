@@ -1,7 +1,7 @@
 package com.gouwo.service;
 
-import com.gouwo.entity.ArticleRelatedHouseInfo;
-import com.gouwo.entity.SearchArticle;
+import com.gouwo.dto.ArticleRelatedHouseDto;
+import com.gouwo.dto.SearchArticleDto;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
@@ -29,25 +29,25 @@ public interface SearchArticleService {
     /**
      * 根据id创建图文
      */
-    SearchArticle create(Integer articleId);
+    SearchArticleDto create(Integer articleId);
 
     /**
      * 根据关键字搜索图文或者标题
      */
-    Page<SearchArticle> search(String keyword, Integer pageNum, Integer pageSize);
+    Page<SearchArticleDto> search(String keyword, Integer pageNum, Integer pageSize);
 
     /**
      * 根据关键字搜索图文或者标题复合查询
      */
-    Page<SearchArticle> search(String keyword, String brandId, String releaseLocation, Integer pageNum, Integer pageSize,Integer sort);
+    Page<SearchArticleDto> search(String keyword, String brandId, String releaseLocation, Integer pageNum, Integer pageSize,Integer sort);
 
     /**
      * 根据图文id推荐相关图文
      */
-    Page<SearchArticle> recommend(Integer id, Integer pageNum, Integer pageSize);
+    Page<SearchArticleDto> recommend(Integer id, Integer pageNum, Integer pageSize);
 
     /**
      * 获取搜索词相关图文、房源信息、房子时间线记录
      */
-    ArticleRelatedHouseInfo searchRelatedInfo(String keyword);
+    ArticleRelatedHouseDto searchRelatedInfo(String keyword);
 }

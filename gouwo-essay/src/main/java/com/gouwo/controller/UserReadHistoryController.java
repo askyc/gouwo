@@ -1,7 +1,7 @@
 package com.gouwo.controller;
 
 import com.gouwo.api.CommonResult;
-import com.gouwo.entity.UserReadHistory;
+import com.gouwo.dto.UserReadHistoryDto;
 import com.gouwo.service.UserReadHistoryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -26,7 +26,7 @@ public class UserReadHistoryController {
     @ApiOperation("创建浏览记录")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult create(@RequestBody UserReadHistory userReadHistory) {
+    public CommonResult create(@RequestBody UserReadHistoryDto userReadHistory) {
         int count = userReadHistoryService.create(userReadHistory);
         if (count > 0) {
             return CommonResult.success(count);
@@ -50,8 +50,8 @@ public class UserReadHistoryController {
     @ApiOperation("展示浏览记录")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<List<UserReadHistory>> list(Integer userId) {
-        List<UserReadHistory> userReadHistoryList = userReadHistoryService.list(userId);
+    public CommonResult<List<UserReadHistoryDto>> list(Integer userId) {
+        List<UserReadHistoryDto> userReadHistoryList = userReadHistoryService.list(userId);
         return CommonResult.success(userReadHistoryList);
     }
 }

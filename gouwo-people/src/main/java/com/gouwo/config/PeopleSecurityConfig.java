@@ -4,7 +4,6 @@ import com.gouwo.component.DynamicSecurityService;
 import com.gouwo.model.ApisModel;
 import com.gouwo.service.ApisService;
 import com.gouwo.service.LoginService;
-import io.swagger.annotations.ApiModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

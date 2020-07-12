@@ -1,4 +1,4 @@
-package com.gouwo.entity;
+package com.gouwo.bo;
 
 import lombok.Getter;
 

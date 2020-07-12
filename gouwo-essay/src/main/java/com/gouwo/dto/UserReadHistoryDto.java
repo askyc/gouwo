@@ -1,17 +1,18 @@
-package com.gouwo.entity;
+package com.gouwo.dto;
 
 
-import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Date;
 
 /**
  * @Author asky
  * @Date 2020/6/27 9:33
  */
 @Document
-public class UserReadHistory {
+public class UserReadHistoryDto {
     @Id
     private String id;
     @Indexed

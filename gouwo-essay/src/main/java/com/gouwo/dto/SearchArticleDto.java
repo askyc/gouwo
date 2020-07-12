@@ -1,4 +1,4 @@
-package com.gouwo.entity;
+package com.gouwo.dto;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -15,7 +15,7 @@ import java.util.List;
  * @Date 2020/7/5 9:25
  */
 @Document(indexName = "ess", type = "article",shards = 1,replicas = 0)
-public class SearchArticle implements Serializable {
+public class SearchArticleDto implements Serializable {
     private static final long serialVersionUID = -1L;
 
     @Id
@@ -47,7 +47,7 @@ public class SearchArticle implements Serializable {
     private Integer sort;
 
     @Field(type =FieldType.Nested)
-    private List<HouseAttributeValue> attrValueList;
+    private List<HouseAttributeDto> attrValueList;
 
     public Integer getArticleId() {
         return articleId;
@@ -145,11 +145,11 @@ public class SearchArticle implements Serializable {
         this.sort = sort;
     }
 
-    public List<HouseAttributeValue> getAttrValueList() {
+    public List<HouseAttributeDto> getAttrValueList() {
         return attrValueList;
     }
 
-    public void setAttrValueList(List<HouseAttributeValue> attrValueList) {
+    public void setAttrValueList(List<HouseAttributeDto> attrValueList) {
         this.attrValueList = attrValueList;
     }
 }

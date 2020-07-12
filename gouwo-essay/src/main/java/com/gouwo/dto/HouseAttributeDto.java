@@ -1,4 +1,4 @@
-package com.gouwo.entity;
+package com.gouwo.dto;
 
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
@@ -10,7 +10,7 @@ import java.io.Serializable;
  * @Date 2020/7/5 14:34
  * 搜索中图文关联的房子属性信息
  */
-public class HouseAttributeValue implements Serializable {
+public class HouseAttributeDto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
