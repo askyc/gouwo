@@ -3,13 +3,12 @@ package com.gouwo.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gouwo.api.CommonResult;
 import com.gouwo.bo.AdminUserDetails;
-import com.gouwo.mapper.PeoRoleMapper;
-import com.gouwo.mapper.PeoUserMapper;
-import com.gouwo.model.PeoRoleModel;
-import com.gouwo.model.PeoUserModel;
+import com.gouwo.mapper.RoleMapper;
+import com.gouwo.mapper.UserMapper;
+import com.gouwo.model.RoleModel;
+import com.gouwo.model.UserModel;
 import com.gouwo.service.LoginService;
 import com.gouwo.service.RedisService;
-import com.gouwo.service.UserService;
 import com.gouwo.util.JwtTokenUtil;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -38,9 +37,9 @@ import java.util.Random;
  * @since 2020-07-01
  */
 @Service
-public class LoginServiceImpl extends ServiceImpl<PeoUserMapper, PeoUserModel> implements LoginService {
+public class LoginServiceImpl extends ServiceImpl<UserMapper, UserModel> implements LoginService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(PeoUserServiceImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
     //@Value("${redis.key.prefix.authCode}")
     private String REDIS_KEY_PREFIX_AUTH_CODE="authCode";
@@ -54,22 +53,22 @@ public class LoginServiceImpl extends ServiceImpl<PeoUserMapper, PeoUserModel> i
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private PeoUserMapper peoUserMapper;
+    private UserMapper userMapper;
 
     @Autowired
-    private PeoRoleMapper peoRoleMapper;
+    private RoleMapper roleMapper;
 
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
     @Override
-    public PeoUserModel register(PeoUserModel model) {
-        PeoUserModel userModel = new PeoUserModel();
+    public UserModel register(UserModel model) {
+        UserModel userModel = new UserModel();
         BeanUtils.copyProperties(model, userModel);
         //将密码进行加密操作
         String encodePassword = passwordEncoder.encode(userModel.getPassword());
         userModel.setPassword(encodePassword);
-        peoUserMapper.insert(userModel);
+        userMapper.insert(userModel);
         return userModel;
     }
 
@@ -94,10 +93,10 @@ public class LoginServiceImpl extends ServiceImpl<PeoUserMapper, PeoUserModel> i
     @Override
     public UserDetails loadUserByAccount(String account){
         //获取用户信息
-        PeoUserModel user = peoUserMapper.selectById(2);
+        UserModel user = userMapper.selectById(2);
         if (user != null) {
-            List<PeoRoleModel> roleList=new ArrayList<>();
-            PeoRoleModel role= peoRoleMapper.selectById(1);
+            List<RoleModel> roleList=new ArrayList<>();
+            RoleModel role= roleMapper.selectById(1);
             roleList.add(role);
             return new AdminUserDetails(user,roleList);
         }

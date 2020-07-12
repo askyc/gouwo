@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.gouwo.mapper.PeoUserMapper">
+<mapper namespace="com.gouwo.mapper.UserMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.gouwo.model.PeoUserModel">
+    <resultMap id="BaseResultMap" type="com.gouwo.model.UserModel">
         <id column="user_id" property="userId" />
         <result column="user_name" property="userName" />
         <result column="nickname" property="nickname" />
+        <result column="avatar" property="avatar" />
         <result column="account" property="account" />
         <result column="password" property="password" />
         <result column="gender" property="gender" />
@@ -14,10 +15,17 @@
         <result column="email" property="email" />
         <result column="phone_number" property="phoneNumber" />
         <result column="address" property="address" />
+        <result column="create_time" property="createTime" />
+        <result column="login_time" property="loginTime" />
+        <result column="status" property="status" />
     </resultMap>
 
-    <select id="selectByExample" parameterType="com.gouwo.model.PeoUserModel" resultMap="BaseResultMap">
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        user_id, user_name, nickname, avatar, account, password, gender, age, email, phone_number, address, create_time, login_time, status
+    </sql>
+
+    <select id="selectByExample" parameterType="com.gouwo.model.UserModel" resultMap="BaseResultMap">
         select * from peo_user
     </select>
-
 </mapper>

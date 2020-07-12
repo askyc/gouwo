@@ -1,9 +1,10 @@
 package com.gouwo.config;
 
 import com.gouwo.component.DynamicSecurityService;
-import com.gouwo.model.PeoApiModel;
+import com.gouwo.model.ApisModel;
+import com.gouwo.service.ApisService;
 import com.gouwo.service.LoginService;
-import com.gouwo.service.PeoApiService;
+import io.swagger.annotations.ApiModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,7 +31,7 @@ public class PeopleSecurityConfig extends SecurityConfig {
     private LoginService loginService;
 
     @Autowired
-    private PeoApiService peoApiService;
+    private ApisService apisService;
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -45,8 +46,8 @@ public class PeopleSecurityConfig extends SecurityConfig {
             public Map<String, ConfigAttribute> loadDataSource() {
                 Map<String, ConfigAttribute> map = new ConcurrentHashMap<>();
                 //todo 获取个人能访问的api
-                List<PeoApiModel> apiList = peoApiService.list();
-                for (PeoApiModel api : apiList) {
+                List<ApisModel> apiList = apisService.list();
+                for (ApisModel api : apiList) {
                     map.put(api.getUrl(), new org.springframework.security.access.SecurityConfig(api.getApiId() + ":" + api.getName()));
                 }
                 return map;

@@ -1,7 +1,7 @@
 package com.gouwo.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.gouwo.model.PeoUserModel;
+import com.gouwo.model.UserModel;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import java.util.List;
  * @author asky
  * @since 2020-06-14
  */
-public interface UserMapper extends BaseMapper<PeoUserModel> {
+public interface UserMapper extends BaseMapper<UserModel> {
 
-    List<PeoUserModel> findUser();
+    List<UserModel> findUser();
 }

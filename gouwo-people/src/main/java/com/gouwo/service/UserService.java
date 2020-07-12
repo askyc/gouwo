@@ -1,7 +1,7 @@
 package com.gouwo.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.gouwo.model.PeoUserModel;
+import com.gouwo.model.UserModel;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.gouwo.model.PeoUserModel;
  * @author asky
  * @since 2020-06-11
  */
-public interface UserService extends IService<PeoUserModel> {
+public interface UserService extends IService<UserModel> {
 
 }

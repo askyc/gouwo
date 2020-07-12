@@ -1,7 +1,7 @@
 package com.gouwo.service;
 
 import com.gouwo.api.CommonResult;
-import com.gouwo.model.PeoUserModel;
+import com.gouwo.model.UserModel;
 import org.springframework.security.core.userdetails.UserDetails;
 
 /**
@@ -17,7 +17,7 @@ public interface LoginService {
     /**
      * 注册
      */
-    PeoUserModel register(PeoUserModel model);
+    UserModel register(UserModel model);
 
     /**
      * 登录

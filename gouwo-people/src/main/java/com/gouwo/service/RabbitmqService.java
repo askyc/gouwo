@@ -1,7 +1,7 @@
 package com.gouwo.service;
 
 import com.gouwo.api.CommonResult;
-import com.gouwo.model.PeoUserModel;
+import com.gouwo.model.UserModel;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -13,7 +13,7 @@ public interface RabbitmqService {
      * 根据提交信息生成订单
      */
     @Transactional
-    CommonResult generateOrder(PeoUserModel peoUserModel);
+    CommonResult generateOrder(UserModel userModel);
 
     /**
      * 取消单个超时订单

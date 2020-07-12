@@ -2,7 +2,7 @@ package com.gouwo.service.impl;
 
 import com.gouwo.api.CommonResult;
 import com.gouwo.component.CancelOrderSender;
-import com.gouwo.model.PeoUserModel;
+import com.gouwo.model.UserModel;
 import com.gouwo.service.RabbitmqService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +22,7 @@ public class RabbitmqServiceImpl implements RabbitmqService {
     private CancelOrderSender cancelOrderSender;
 
     @Override
-    public CommonResult generateOrder(PeoUserModel peoUserModel) {
+    public CommonResult generateOrder(UserModel userModel) {
         //todo 执行一系类下单操作
         LOGGER.info("process generateOrder");
         //下单完成后开启一个延迟消息，用于当用户没有付款时取消订单

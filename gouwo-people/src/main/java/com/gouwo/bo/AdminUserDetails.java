@@ -1,7 +1,7 @@
 package com.gouwo.bo;
 
-import com.gouwo.model.PeoRoleModel;
-import com.gouwo.model.PeoUserModel;
+import com.gouwo.model.RoleModel;
+import com.gouwo.model.UserModel;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,11 +15,12 @@ import java.util.stream.Collectors;
  */
 public class AdminUserDetails implements UserDetails {
 
-    private PeoUserModel peoUserModel;
-    private List<PeoRoleModel> roleList;
+    private UserModel userModel;
 
-    public AdminUserDetails(PeoUserModel peoUserModel, List<PeoRoleModel> roleList) {
-        this.peoUserModel = peoUserModel;
+    private List<RoleModel> roleList;
+
+    public AdminUserDetails(UserModel userModel, List<RoleModel> roleList) {
+        this.userModel = userModel;
         this.roleList = roleList;
     }
 
@@ -33,12 +34,12 @@ public class AdminUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return peoUserModel.getPassword();
+        return userModel.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return peoUserModel.getAccount();
+        return userModel.getAccount();
     }
 
     @Override

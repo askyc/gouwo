@@ -1,6 +1,6 @@
 package com.gouwo.component;
 
-import com.gouwo.model.PeoUserModel;
+import com.gouwo.model.UserModel;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,7 +22,7 @@ public class HelloSender {
         this.rabbitTemplate.convertAndSend("hello", context);
     }
 
-    public void send(PeoUserModel user) {
+    public void send(UserModel user) {
         System.out.println("Sender object: " + user.toString());
         this.rabbitTemplate.convertAndSend("hello", user);
     }

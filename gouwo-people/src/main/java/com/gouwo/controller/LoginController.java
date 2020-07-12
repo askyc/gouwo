@@ -1,7 +1,7 @@
 package com.gouwo.controller;
 
 import com.gouwo.api.CommonResult;
-import com.gouwo.model.PeoUserModel;
+import com.gouwo.model.UserModel;
 import com.gouwo.service.LoginService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -37,8 +37,8 @@ public class LoginController {
     @ApiOperation(value = "注册")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<PeoUserModel> register(@RequestBody PeoUserModel model, BindingResult result) {
-        PeoUserModel  userModel= loginService.register(model);
+    public CommonResult<UserModel> register(@RequestBody UserModel model, BindingResult result) {
+        UserModel  userModel= loginService.register(model);
         if (userModel == null) {
             CommonResult.failed();
         }
@@ -48,7 +48,7 @@ public class LoginController {
     @ApiOperation(value = "登录(返回token)")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult login(@RequestBody PeoUserModel model, BindingResult result) {
+    public CommonResult login(@RequestBody UserModel model, BindingResult result) {
         String token = loginService.login(model.getAccount(), model.getPassword());
         if (token == null) {
             return CommonResult.validateFailed("用户名或密码错误");

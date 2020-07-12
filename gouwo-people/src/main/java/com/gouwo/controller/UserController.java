@@ -1,6 +1,6 @@
 package com.gouwo.controller;
 
-import com.gouwo.model.PeoUserModel;
+import com.gouwo.model.UserModel;
 import com.gouwo.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,8 +27,8 @@ public class UserController {
 
     @ApiOperation("获取所有用户")
     @RequestMapping(value = "/getUserList", method = RequestMethod.GET)
-    public List<PeoUserModel> getUserList(){
-        List<PeoUserModel> list=userService.list();
+    public List<UserModel> getUserList(){
+        List<UserModel> list=userService.list();
         return list;
     }
 

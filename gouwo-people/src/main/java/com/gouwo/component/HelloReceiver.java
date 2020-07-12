@@ -1,6 +1,6 @@
 package com.gouwo.component;
 
-import com.gouwo.model.PeoUserModel;
+import com.gouwo.model.UserModel;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
@@ -19,7 +19,7 @@ public class HelloReceiver {
     }
 
     @RabbitHandler
-    public void process(PeoUserModel user) {
+    public void process(UserModel user) {
         System.out.println("Receiver object : " + user);
     }
 

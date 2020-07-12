@@ -1,7 +1,7 @@
 package com.gouwo.service.impl;
 
-import com.gouwo.mapper.PeoUserMapper;
-import com.gouwo.model.PeoUserModel;
+import com.gouwo.mapper.UserMapper;
+import com.gouwo.model.UserModel;
 import com.gouwo.service.UserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
@@ -16,6 +16,6 @@ import org.springframework.stereotype.Service;
  * @since 2020-06-11
  */
 @Service
-public class UserServiceImpl extends ServiceImpl<PeoUserMapper, PeoUserModel> implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, UserModel> implements UserService {
 
 }
