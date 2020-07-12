@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author asky
- * @since 2020-06-14
+ * @since 2020-07-12
  */
 @RestController
-//@RequestMapping("/ess-article-model")
-public class EssArticleController {
+@RequestMapping("/article")
+public class ArticleController {
 
     @GetMapping("/hello/{name}")
     public String hello(@PathVariable String name) {

@@ -17,14 +17,14 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author asky
- * @since 2020-06-14
+ * @since 2020-07-12
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("ess_reply")
-@ApiModel(value="EssReplyModel对象", description="图文评论回复表")
-public class EssReplyModel implements Serializable {
+@ApiModel(value="ReplyModel对象", description="图文评论回复表")
+public class ReplyModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

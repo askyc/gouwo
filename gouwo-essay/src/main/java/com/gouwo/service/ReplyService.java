@@ -1,6 +1,6 @@
 package com.gouwo.service;
 
-import com.gouwo.model.EssReplyModel;
+import com.gouwo.model.ReplyModel;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author asky
- * @since 2020-06-14
+ * @since 2020-07-12
  */
-public interface EssReplyService extends IService<EssReplyModel> {
+public interface ReplyService extends IService<ReplyModel> {
 
 }

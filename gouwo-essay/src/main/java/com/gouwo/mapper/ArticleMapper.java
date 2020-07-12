@@ -1,6 +1,6 @@
 package com.gouwo.mapper;
 
-import com.gouwo.model.EssArticleModel;
+import com.gouwo.model.ArticleModel;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author asky
- * @since 2020-06-14
+ * @since 2020-07-12
  */
-public interface EssArticleMapper extends BaseMapper<EssArticleModel> {
+public interface ArticleMapper extends BaseMapper<ArticleModel> {
 
 }

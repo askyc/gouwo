@@ -1,6 +1,6 @@
 package com.gouwo.mapper;
 
-import com.gouwo.model.EssReplyModel;
+import com.gouwo.model.ReplyModel;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author asky
- * @since 2020-06-14
+ * @since 2020-07-12
  */
-public interface EssReplyMapper extends BaseMapper<EssReplyModel> {
+public interface ReplyMapper extends BaseMapper<ReplyModel> {
 
 }

@@ -1,6 +1,6 @@
 package com.gouwo.mapper;
 
-import com.gouwo.model.EssCommentModel;
+import com.gouwo.model.CommentModel;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author asky
- * @since 2020-06-14
+ * @since 2020-07-12
  */
-public interface EssCommentMapper extends BaseMapper<EssCommentModel> {
+public interface CommentMapper extends BaseMapper<CommentModel> {
 
 }

@@ -3,7 +3,7 @@ package com.gouwo.service.impl;
 import com.gouwo.dao.SearchArticleDao;
 import com.gouwo.entity.ArticleRelatedHouseInfo;
 import com.gouwo.entity.SearchArticle;
-import com.gouwo.model.EssArticleModel;
+import com.gouwo.model.ArticleModel;
 import com.gouwo.repository.SearchArticleRepository;
 import com.gouwo.service.ArticleService;
 import com.gouwo.service.SearchArticleService;
@@ -68,10 +68,10 @@ public class SearchArticleServiceImpl implements SearchArticleService {
     @Override
     public int importAll() {
         List<SearchArticle> articleList=new ArrayList<>();
-        List<EssArticleModel> list = articleService.list();
-        for (EssArticleModel essArticleModel : list) {
+        List<ArticleModel> list = articleService.list();
+        for (ArticleModel articleModel : list) {
             SearchArticle article = new SearchArticle();
-            BeanUtils.copyProperties(essArticleModel, article);
+            BeanUtils.copyProperties(articleModel, article);
             articleList.add(article);
         }
 
@@ -106,7 +106,7 @@ public class SearchArticleServiceImpl implements SearchArticleService {
     @Override
     public SearchArticle create(Integer articleId) {
         SearchArticle result = null;
-        EssArticleModel article = articleService.getById(articleId);
+        ArticleModel article = articleService.getById(articleId);
         if (article!=null) {
             SearchArticle searchArticle = new SearchArticle();
             BeanUtils.copyProperties(article, searchArticle);

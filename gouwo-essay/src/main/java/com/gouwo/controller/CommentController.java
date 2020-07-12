@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author asky
- * @since 2020-06-14
+ * @since 2020-07-12
  */
 @RestController
-@RequestMapping("/ess-comment-model")
-public class EssCommentController {
+@RequestMapping("/comment")
+public class CommentController {
 
 }

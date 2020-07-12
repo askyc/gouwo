@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author asky
- * @since 2020-06-14
+ * @since 2020-07-12
  */
 @RestController
-@RequestMapping("/ess-reply-model")
-public class EssReplyController {
+@RequestMapping("/reply")
+public class ReplyController {
 
 }

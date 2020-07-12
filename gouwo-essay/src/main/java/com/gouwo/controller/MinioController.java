@@ -1,7 +1,7 @@
 package com.gouwo.controller;
 
 import com.gouwo.api.CommonResult;
-import com.gouwo.model.EssArticleModel;
+import com.gouwo.model.ArticleModel;
 import io.minio.MinioClient;
 import io.minio.policy.PolicyType;
 import io.swagger.annotations.Api;
@@ -60,10 +60,10 @@ public class MinioController {
             // 使用putObject上传一个文件到存储桶中
             minioClient.putObject(BUCKET_NAME, objectName, file.getInputStream(), file.getContentType());
             LOGGER.info("文件上传成功!");
-            EssArticleModel essArticleModel = new EssArticleModel();
-            essArticleModel.setTitle(filename);
-            essArticleModel.setTitlePage(ENDPOINT + "/" + BUCKET_NAME + "/" + objectName);
-            return CommonResult.success(essArticleModel);
+            ArticleModel articleModel = new ArticleModel();
+            articleModel.setTitle(filename);
+            articleModel.setTitlePage(ENDPOINT + "/" + BUCKET_NAME + "/" + objectName);
+            return CommonResult.success(articleModel);
         } catch (Exception e) {
             LOGGER.info("上传发生错误: {}！", e.getMessage());
         }
