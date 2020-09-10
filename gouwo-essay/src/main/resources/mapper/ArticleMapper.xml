@@ -25,4 +25,7 @@
         article_id, title, content, title_page, label, rent_type, rent, publisher, release_time, release_location, article_status, read_amount, like_amount, collect_amount
     </sql>
 
+<!--    <select id="getArticleInfoList" resultType="com.gouwo.model.ArticleModel">-->
+<!--        SELECT * FROM ess_article WHERE label=#{label}-->
+<!--    </select>-->
 </mapper>

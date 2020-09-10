@@ -9,8 +9,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication
-//@MapperScan("com.gouwo.mapper")
-//@MapperScan("com.gouwo.dao")
+@MapperScan("com.gouwo.mapper")
+@MapperScan("com.gouwo.dao")
 public class GouwoEssayApplication {
 
 	public static void main(String[] args) {

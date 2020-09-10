@@ -1,11 +1,12 @@
 package com.gouwo.controller;
 
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.gouwo.service.ArticleService;
+import com.gouwo.vo.ArticleInfoVo;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -18,6 +19,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/article")
 public class ArticleController {
+
+    @Autowired
+    private ArticleService articleService;
+
+    @ApiOperation("获取租房图文信息")
+    @RequestMapping(value = "/getArticleInfoList", method = RequestMethod.GET)
+    public IPage<ArticleInfoVo> getArticleInfoList(String label){
+        IPage<ArticleInfoVo> articlelist=articleService.getArticleInfoList(new Page<>(1,10),label);
+        return articlelist;
+    }
+
 
     @GetMapping("/hello/{name}")
     public String hello(@PathVariable String name) {

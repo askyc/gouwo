@@ -59,10 +59,10 @@ spring:
       max-file-size: 10MB #限制文件上传大小为10M
 
 
-mybatis:
-  mapper-locations:
-    - classpath:dao/*.xml
-    - classpath:mapper/*.xml
+#mybatis:
+#  mapper-locations:
+#    - classpath:dao/*.xml
+#    - classpath:mapper/*.xml
 
 
 # MinIO对象存储相关配置=====================
