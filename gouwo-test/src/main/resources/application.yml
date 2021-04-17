@@ -1,0 +1,16 @@
+server:
+  port: 9000
+
+
+spring:
+  application:
+    name: gouwo-test
+  #  profiles:
+  #    active: dev
+
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8181/eureka/
+#    registry-fetch-interval-seconds: 10
