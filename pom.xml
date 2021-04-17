@@ -25,15 +25,17 @@
         <module>gouwo-house</module>
         <module>gouwo-essay</module>
         <module>gouwo-vlog</module>
+        <module>gouwo-chat</module>
+        <module>gouwo-nearby</module>
         <!--<module>gouwo-search</module>-->
-        <!--<module>gouwo-echarts</module>-->
-        <!--<module>gouwo-bill</module>-->
         <!--<module>gouwo-area</module>-->
+        <!--测试模块-->
+        <module>gouwo-test</module>
     </modules>
 
     <name>gouwo</name>
     <description>GOUWO</description>
-    <url>http://asky.xyz</url>
+    <url>asky.xyz</url>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -58,7 +60,6 @@
         <mysql-connector.version>8.0.17</mysql-connector.version>
         <spring-data-commons.version>2.1.5.RELEASE</spring-data-commons.version>
         <jjwt.version>0.9.0</jjwt.version>
-        <aliyun-oss.version>2.5.0</aliyun-oss.version>
         <logstash-logback.version>5.3</logstash-logback.version>
         <admin-starter-server.version>2.1.5</admin-starter-server.version>
     </properties>
@@ -177,13 +178,6 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
-            </dependency>
-
-            <!-- 阿里云OSS -->
-            <dependency>
-                <groupId>com.aliyun.oss</groupId>
-                <artifactId>aliyun-sdk-oss</artifactId>
-                <version>${aliyun-oss.version}</version>
             </dependency>
 
             <!--集成logstash-->

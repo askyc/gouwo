@@ -1,0 +1,17 @@
+server:
+  port: 9004
+
+
+spring:
+  application:
+    name: gouwo-chat
+  #  profiles:
+  #    active: dev
+
+
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8181/eureka/
+#    registry-fetch-interval-seconds: 10

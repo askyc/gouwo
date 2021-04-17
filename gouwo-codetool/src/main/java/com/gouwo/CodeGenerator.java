@@ -19,6 +19,11 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
+/**
+ * @Author: asky
+ * @Date: 2021/3/5 18:21
+ * @Desc: 代码自动生成工具
+ */
 public class CodeGenerator {
 
     /**
@@ -28,13 +33,11 @@ public class CodeGenerator {
      */
     public static String scanner(String tip) {
         Scanner scanner = new Scanner(System.in);
-        StringBuilder help = new StringBuilder();
-        help.append("请输入" + tip + "：");
-        System.out.println(help.toString());
+        System.out.println("请输入" + tip + "：");
         if (scanner.hasNext()) {
-            String ipt = scanner.next();
-            if (StringUtils.isNotEmpty(ipt)) {
-                return ipt;
+            String input = scanner.next();
+            if (StringUtils.isNotEmpty(input)) {
+                return input;
             }
         }
         throw new MybatisPlusException("请输入正确的" + tip + "！");
@@ -52,7 +55,7 @@ public class CodeGenerator {
         String projectPath = System.getProperty("user.dir");
         String modulePath = scanner("子项目名!");
         //生成路径(一般都是生成在此项目的src/main/java下面)
-        gc.setOutputDir(projectPath + "\\"+  modulePath + "\\src\\main\\java");
+        gc.setOutputDir(projectPath + "\\" + modulePath + "\\src\\main\\java");
         //第二次生成会把第一次的覆盖
         gc.setFileOverride(true);
         //不需要ActiveRecord特性的请改为false
@@ -61,7 +64,7 @@ public class CodeGenerator {
         gc.setEnableCache(false);
         //XML ResultMap
         gc.setBaseResultMap(true);
-        //XML columList  在xml中生产基础列
+        //XML columnList  在xml中生产基础列
         gc.setBaseColumnList(true);
         gc.setOpen(false);
         // 实体属性 Swagger2 注解
@@ -75,8 +78,8 @@ public class CodeGenerator {
         dsc.setDriverName(rb.getString("driverName"));
         //数据库类型
         dsc.setDbType(DbType.MYSQL);
-        dsc.setUsername("root");
-        dsc.setPassword("root");
+        dsc.setUsername(rb.getString("userName"));
+        dsc.setPassword(rb.getString("password"));
         mpg.setDataSource(dsc);
 
         //自定义文件命名，注意%s 会自动填充表实体属性
@@ -87,13 +90,13 @@ public class CodeGenerator {
         gc.setEntityName("%sModel");
         mpg.setGlobalConfig(gc);
 
-         //包配置
+        //包配置
         PackageConfig pc = new PackageConfig();
         //pc.setModuleName(scanner("包名"));
         pc.setParent(rb.getString("parent"));
         pc.setController("controller");
         pc.setService("service");
-        pc.setServiceImpl("service"+ ".impl");
+        pc.setServiceImpl("service" + ".impl");
         pc.setMapper("mapper");
         pc.setEntity("model");
         mpg.setPackageInfo(pc);
@@ -114,15 +117,11 @@ public class CodeGenerator {
                 //对于已存在的文件，只需重复生成 model 和 mapper.xml
                 File file = new File(filePath);
                 boolean exist = file.exists();
-                if(exist){
-                    if (filePath.endsWith("Mapper.xml")||FileType.ENTITY==fileType){
-                        return true;
-                    }else {
-                        return false;
-                    }
+                if (exist) {
+                    return filePath.endsWith("Mapper.xml") || FileType.ENTITY == fileType;
                 }
                 //不存在的文件都需要创建
-                return  true;
+                return true;
             }
         });
 
@@ -135,9 +134,9 @@ public class CodeGenerator {
         focList.add(new FileOutConfig(templatePath) {
             @Override
             public String outputFile(TableInfo tableInfo) {
-                // 自定义输出文件名 ， 如果Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                return projectPath + "\\"+ modulePath + "\\src\\main\\resources\\mapper\\" + tableInfo.getEntityName().
-                        substring(0,tableInfo.getEntityName().length()-5) + "Mapper" + StringPool.DOT_XML;
+                // 自定义输出文件名，如果Entity设置了前后缀、此处注意xml的名称会跟着发生变化！
+                return projectPath + "\\" + modulePath + "\\src\\main\\resources\\mapper\\" + tableInfo.getEntityName().
+                        substring(0, tableInfo.getEntityName().length() - 5) + "Mapper" + StringPool.DOT_XML;
             }
         });
         cfg.setFileOutConfigList(focList);
