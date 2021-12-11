@@ -1,17 +1,15 @@
-===========
+=======================================
 #开启服务
 cd E:\MongoDB\Server\bin
------
-mongod --dbpath E:\MongoDB\Server\data
 
-================
+mongodb --dbpath E:\MongoDB\Server\data
+---------------------------------------
 启动服务：net start MongoDB
 关闭服务：net stop MongoDB
-=========
+=======================================
 #开启命令shell
 mongo
 
-============
 MongoDB shell自带了一些语法糖：
 
 show dbs     列出所有DB
