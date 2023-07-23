@@ -52,7 +52,7 @@
         <gouwo-common.version>0.0.1-SNAPSHOT</gouwo-common.version>
         <gouwo-security.version>0.0.1-SNAPSHOT</gouwo-security.version>
         <pagehelper-starter.version>1.2.10</pagehelper-starter.version>
-        <pagehelper.version>5.1.8</pagehelper.version>
+        <pagehelper.version>5.3.1</pagehelper.version>
         <druid.version>1.1.10</druid.version>
         <hutool.version>4.5.7</hutool.version>
         <swagger.version>2.9.1</swagger.version>
